@@ -1,10 +1,4 @@
-FROM python:3.10-slim
-WORKDIR /app
-COPY . .
-# Using requirements.txt.txt based on your file structure
-RUN pip install -r requirements.txt.txt
-RUN pip install gunicorn
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
+from flask import Flask, render_template, request, redirect
 
 import sqlite3
 import os
